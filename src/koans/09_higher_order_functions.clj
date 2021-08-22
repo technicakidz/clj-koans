@@ -19,18 +19,18 @@
   ;; true/false は何を判定している？
 
   "Or somewhere in between"
-  (= [10 20 30] (filter (fn [x] __) [10 20 30 40 50 60 70 80]))
+  (= [10 20 30] (filter (fn [x] (< x 31)) [10 20 30 40 50 60 70 80]))
 
   "Maps and filters may be combined"
-  (= [10 20 30] (map (fn [x] __) (filter (fn [x] __) [1 2 3 4 5 6 7 8])))
+  (= [10 20 30] (map (fn [x] (* 10 x)) (filter (fn [x] (< x 4)) [1 2 3 4 5 6 7 8])))
 
   "Reducing can increase the result"
-  (= __ (reduce (fn [a b] (* a b)) [1 2 3 4]))
+  (= 24 (reduce (fn [a b] (* a b)) [1 2 3 4]))
 
   "You can start somewhere else"
-  (= 2400 (reduce (fn [a b] (* a b)) __ [1 2 3 4]))
+  (= 2400 (reduce (fn [a b] (* a b)) 100 [1 2 3 4]))
 
   "Numbers are not the only things one can reduce"
   (= "longest" (reduce (fn [a b]
-                         (if (< __ __) b a))
+                         (if (< (count a) (count b)) b a))
                        ["which" "word" "is" "longest"])))
