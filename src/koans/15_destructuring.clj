@@ -22,7 +22,10 @@
   (= "Rich Hickey aka The Clojurer aka Go Time aka Lambda Guru"
      (let [[first-name last-name & aliases]
            (list "Rich" "Hickey" "The Clojurer" "Go Time" "Lambda Guru")]
-       __))
+       (apply str (interpose " " (apply list first-name last-name (interleave (repeat "aka") aliases))))))
+       ;; interleave (interleave c1 c2 & colls)
+       ;; koan-engine.runner=> (interleave [:a :b :c] [10 20])
+       ;; (:a 10 :b 20)
 
   "You can regain the full argument if you like arguing"
   (= {:original-parts ["Stephen" "Hawking"] :named-parts {:first "Stephen" :last "Hawking"}}
