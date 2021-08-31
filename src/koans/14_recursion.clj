@@ -3,21 +3,38 @@
 
 (defn is-even? [n]
   (if (= n 0)
-    __
-    (___ (is-even? (dec n)))))
+    true
+    (not (is-even? (dec n)))))
 
 (defn is-even-bigint? [n]
   (loop [n   n
          acc true]
     (if (= n 0)
-      __
+      acc
       (recur (dec n) (not acc)))))
 
 (defn recursive-reverse [coll]
-  __)
+  (loop [coll   coll
+         acc ()]
+    (if (seq coll)
+      (recur (rest coll) (conj acc (first coll)))
+      acc))
+  )
+;; 対象のベクタ collection をリストに変換して
+;; coll の先頭要素から取得して
+;; 取得した順に値を並べる(逆順)
 
 (defn factorial [n]
-  __)
+  (loop [cnt n acc 1]
+    (if (zero? cnt)
+      acc
+      (recur (dec cnt) (* acc cnt))))
+  )
+;; factorial 階乗
+;; 引数0のとき1を返す
+;; かける数分の個数は引数から定義し
+;; ループで順番に 引数(or 引数-1した数)-1 し
+;; それらを乗算する
 
 (meditations
   "Recursion ends with a base case"

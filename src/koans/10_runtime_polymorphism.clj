@@ -8,6 +8,13 @@
                    (apply str
                           (interpose ", " (cons a more)))
                    "!")))
+                   ;; (interpose sep coll)
+                   ;; interpose はシーケンスで与えられたコレクションを区切る
+                   ;; user> (def my-strings ["one" "two" "three"])
+                   ;; user> (interpose ", " my-strings)
+                   ;; => ("one" ", " "two" ", " "three")
+                   ;; user> (apply str (interpose ", " my-strings))
+                   ;; => "one, two, three"
 
 (defmulti diet (fn [x] (:eater x)))
 (defmethod diet :herbivore [a] (str (:name a) " eats veggies."))
